@@ -2,10 +2,10 @@
 src
 tsconfig.json
 tslint.json
+.vscode
 .babelrc
 .editorconfig
 .prettierrc
-dist/models
 
 # Created by https://www.gitignore.io/api/osx,vim,node,linux,windows
 # Edit at https://www.gitignore.io/?templates=osx,vim,node,linux,windows
