@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "ava",
-    "build:dev": "tsc"
+    "prepare": "npm run build",
+    "prebuild": "npx rimraf dist",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
