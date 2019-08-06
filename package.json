@@ -25,14 +25,14 @@
   },
   "homepage": "https://github.com/YashdalfTheGray/dsts#readme",
   "ava": {
-		"compileEnhancements": false,
-		"extensions": [
-			"ts"
-		],
-		"require": [
-			"ts-node/register"
-		]
-	},
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
   "devDependencies": {
     "ava": "^2.2.0",
     "husky": "^3.0.2",
@@ -43,5 +43,9 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.136",
+    "lodash": "^4.17.15"
   }
 }
