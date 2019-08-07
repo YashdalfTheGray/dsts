@@ -1,3 +1,4 @@
-export default function testFunc(name: string = 'World') {
-  return `Hello, ${name}!`;
-}
+import ListNode from './ListNode';
+import LinkedList from './LinkedList';
+
+export { ListNode, LinkedList };
