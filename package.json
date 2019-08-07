@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "ava",
-    "prepare": "npm run build",
     "prebuild": "npx rimraf dist",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm test && npm run build"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,17 @@
     ],
     "require": [
       "ts-node/register"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md}": [
+      "prettier --write",
+      "git add"
     ]
   },
   "devDependencies": {
