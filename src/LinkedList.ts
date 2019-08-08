@@ -12,14 +12,23 @@ export default class LinkedList<T> {
   public shift(data: T): this {
     if (this.head === null) {
       this.head = new ListNode(data);
-      this.head.next = null;
     } else {
       const temp = this.head.next;
-      this.head = new ListNode(data);
-      this.head.next = temp;
+      this.head = new ListNode(data, temp);
     }
     this.length += 1;
     return this;
+  }
+
+  public unshift(): T {
+    if (this.head === null) {
+      throw new Error('The list is empty');
+    }
+
+    const temp = this.head;
+    this.head = this.head.next;
+    this.length -= 1;
+    return temp.getData();
   }
 
   public *[Symbol.iterator]() {
