@@ -2,11 +2,15 @@ import { ListNode } from '.';
 
 export default class LinkedList<T> {
   private head: ListNode<T> | null;
-  public length: number;
+  private listLength: number;
 
   constructor() {
     this.head = null;
-    this.length = 0;
+    this.listLength = 0;
+  }
+
+  public get length() {
+    return this.listLength;
   }
 
   public shift(data: T): this {
@@ -16,7 +20,7 @@ export default class LinkedList<T> {
       const temp = this.head.next;
       this.head = new ListNode(data, temp);
     }
-    this.length += 1;
+    this.listLength += 1;
     return this;
   }
 
@@ -27,7 +31,7 @@ export default class LinkedList<T> {
 
     const temp = this.head;
     this.head = this.head.next;
-    this.length -= 1;
+    this.listLength -= 1;
     return temp.getData();
   }
 
