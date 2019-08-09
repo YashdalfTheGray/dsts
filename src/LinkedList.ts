@@ -40,13 +40,11 @@ export default class LinkedList<T> {
       return null;
     }
 
-    let node = this.head;
+    let node: ListNode<T> | null = this.head;
 
-    while (!node.next !== null) {
+    while (node !== null) {
       yield node.getData();
-      if (node.next) {
-        node = node.next;
-      }
+      node = node.next;
     }
 
     return null;
