@@ -8,11 +8,22 @@ test('starts with no nodes', t => {
   t.is(ll.length, 0);
 });
 
-test.only('can add a node', t => {
+test('can add a node to the start of empty list', t => {
   const ll = new LinkedList<number>();
 
   ll.shift(4);
 
   t.is(ll.length, 1);
   t.deepEqual([...ll], [4]);
+});
+
+test('can add a node to the start of non-empty list', t => {
+  const ll = new LinkedList<number>();
+
+  ll.shift(4).shift(10);
+  t.is(ll.length, 2);
+
+  ll.shift(19);
+  t.is(ll.length, 3);
+  t.deepEqual([...ll], [19, 10, 4]);
 });
