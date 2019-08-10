@@ -17,7 +17,7 @@ export default class LinkedList<T> {
     if (this.head === null) {
       this.head = new ListNode(data);
     } else {
-      const temp = this.head.next;
+      const temp = this.head;
       this.head = new ListNode(data, temp);
     }
     this.listLength += 1;
@@ -33,6 +33,25 @@ export default class LinkedList<T> {
     this.head = this.head.next;
     this.listLength -= 1;
     return temp.getData();
+  }
+
+  public push(data: T): this {
+    if (this.head === null) {
+      return this.shift(data);
+    } else if (this.head.next === null) {
+      this.head.next = new ListNode(data);
+    } else {
+      let node = this.head;
+
+      while (node.next !== null) {
+        node = node.next;
+      }
+
+      node.next = new ListNode(data);
+    }
+
+    this.listLength += 1;
+    return this;
   }
 
   public *[Symbol.iterator]() {
