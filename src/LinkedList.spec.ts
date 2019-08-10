@@ -27,3 +27,29 @@ test('can add a node to the start of non-empty list', t => {
   t.is(ll.length, 3);
   t.deepEqual([...ll], [19, 10, 4]);
 });
+
+test('can remove a node from the start', t => {
+  const ll = new LinkedList<number>();
+
+  ll.shift(4).shift(10);
+
+  t.is(ll.length, 2);
+  t.is(ll.unshift(), 10);
+  t.deepEqual([...ll], [4]);
+});
+
+test('can remove the last node', t => {
+  const ll = new LinkedList<number>();
+
+  ll.shift(4);
+
+  t.is(ll.length, 1);
+  t.is(ll.unshift(), 4);
+  t.deepEqual([...ll], []);
+});
+
+test('removing from empty throws an error', t => {
+  const ll = new LinkedList<number>();
+
+  t.throws(() => ll.unshift());
+});
