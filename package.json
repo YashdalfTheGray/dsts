@@ -4,7 +4,9 @@
   "description": "data structures but in Typescript",
   "main": "dist/index.js",
   "scripts": {
-    "test": "ava",
+    "test": "nyc ava",
+    "test:no-coverage": "ava",
+    "open-coverage-report": "npx open ./coverage/index.html",
     "prebuild": "npx rimraf dist",
     "build": "tsc",
     "prepare": "npm test && npm run build"
@@ -32,6 +34,26 @@
     "require": [
       "ts-node/register"
     ]
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.spec.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
   },
   "husky": {
     "hooks": {
