@@ -53,3 +53,35 @@ test('removing from empty throws an error', t => {
 
   t.throws(() => ll.unshift());
 });
+
+test('can add to the end of an empty list', t => {
+  const ll = new LinkedList<number>();
+
+  ll.push(4);
+
+  t.is(ll.length, 1);
+  t.deepEqual([...ll], [4]);
+});
+
+test('can add to the end of a list with one thing in it', t => {
+  const ll = new LinkedList<number>();
+
+  ll.push(4).push(10);
+
+  t.is(ll.length, 2);
+  t.deepEqual([...ll], [4, 10]);
+});
+
+test('can add to the end of a list with many things in it', t => {
+  const ll = new LinkedList<number>();
+
+  ll.push(4)
+    .push(10)
+    .push(14)
+    .push(21)
+    .push(33)
+    .push(46);
+
+  t.is(ll.length, 6);
+  t.deepEqual([...ll], [4, 10, 14, 21, 33, 46]);
+});
