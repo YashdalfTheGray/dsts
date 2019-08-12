@@ -85,3 +85,46 @@ test('can add to the end of a list with many things in it', t => {
   t.is(ll.length, 6);
   t.deepEqual([...ll], [4, 10, 14, 21, 33, 46]);
 });
+
+test('can remove a node from the end', t => {
+  const ll = new LinkedList<number>();
+
+  ll.shift(4)
+    .shift(10)
+    .shift(14);
+
+  t.is(ll.length, 3);
+  t.is(ll.pop(), 4);
+  t.deepEqual([...ll], [14, 10]);
+});
+
+test('can remove a node from a longer list', t => {
+  const ll = new LinkedList<number>();
+
+  ll.shift(4)
+    .shift(10)
+    .shift(14)
+    .push(21)
+    .shift(33)
+    .push(46);
+
+  t.is(ll.length, 6);
+  t.is(ll.pop(), 46);
+  t.deepEqual([...ll], [33, 14, 10, 4, 21]);
+});
+
+test('can pop the last node', t => {
+  const ll = new LinkedList<number>();
+
+  ll.shift(4);
+
+  t.is(ll.length, 1);
+  t.is(ll.pop(), 4);
+  t.deepEqual([...ll], []);
+});
+
+test('popping from empty throws an error', t => {
+  const ll = new LinkedList<number>();
+
+  t.throws(() => ll.pop());
+});
