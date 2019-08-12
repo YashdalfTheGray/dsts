@@ -60,6 +60,28 @@ export default class LinkedList<T> {
     return this;
   }
 
+  public pop(): T {
+    if (this.head === null) {
+      throw new ListEmptyError();
+    } else if (this.head.next === null) {
+      const temp = this.head;
+      this.head = null;
+      this.listLength -= 1;
+      return temp.getData();
+    } else {
+      let node = this.head;
+
+      while (node.next !== null && node.next.next !== null) {
+        node = node.next;
+      }
+
+      const temp = node.next!;
+      node.next = null;
+      this.listLength -= 1;
+      return temp.getData();
+    }
+  }
+
   public *[Symbol.iterator]() {
     if (this.head === null) {
       return null;
