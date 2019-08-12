@@ -1,5 +1,11 @@
 import { ListNode } from '.';
 
+class ListEmptyError extends Error {
+  constructor() {
+    super('The list is empty');
+  }
+}
+
 export default class LinkedList<T> {
   private head: ListNode<T> | null;
   private listLength: number;
@@ -26,7 +32,7 @@ export default class LinkedList<T> {
 
   public unshift(): T {
     if (this.head === null) {
-      throw new Error('The list is empty');
+      throw new ListEmptyError();
     }
 
     const temp = this.head;
