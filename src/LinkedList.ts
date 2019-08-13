@@ -6,6 +6,12 @@ class ListEmptyError extends Error {
   }
 }
 
+class IndexOutOfBoundsError extends Error {
+  constructor() {
+    super('Index is out of bounds');
+  }
+}
+
 export default class LinkedList<T> {
   private head: ListNode<T> | null;
   private listLength: number;
@@ -80,6 +86,22 @@ export default class LinkedList<T> {
       this.listLength -= 1;
       return temp.getData();
     }
+  }
+
+  public getAt(index: number): T {
+    if (this.head === null) {
+      throw new ListEmptyError();
+    } else if (this.listLength < index) {
+      throw new IndexOutOfBoundsError();
+    }
+
+    let node = this.head;
+
+    for (let i = 0; i < index; i++) {
+      node = node.next!;
+    }
+
+    return node.getData();
   }
 
   public *[Symbol.iterator]() {
