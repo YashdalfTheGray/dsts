@@ -1,6 +1,9 @@
 import test from 'ava';
 
-import LinkedList from './LinkedList';
+import LinkedList, {
+  IndexOutOfBoundsError,
+  ListEmptyError
+} from './LinkedList';
 
 test('starts with no nodes', t => {
   const ll = new LinkedList();
@@ -127,4 +130,34 @@ test('popping from empty throws an error', t => {
   const ll = new LinkedList<number>();
 
   t.throws(() => ll.pop());
+});
+
+test('can get at a specific index', t => {
+  const ll = new LinkedList<number>();
+
+  ll.push(4)
+    .push(10)
+    .push(14)
+    .push(21);
+
+  t.is(ll.getAt(2), 14);
+});
+
+test('getAt throws an error for index larger than length', t => {
+  const ll = new LinkedList<number>();
+
+  ll.push(4)
+    .push(10)
+    .push(14)
+    .push(21);
+
+  const error = t.throws(() => ll.getAt(8));
+  t.assert(error instanceof IndexOutOfBoundsError);
+});
+
+test('getAt throws an error for empty list', t => {
+  const ll = new LinkedList<number>();
+
+  const error = t.throws(() => ll.getAt(8));
+  t.assert(error instanceof ListEmptyError);
 });
