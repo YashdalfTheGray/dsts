@@ -1,12 +1,12 @@
 import { ListNode } from '.';
 
-class ListEmptyError extends Error {
+export class ListEmptyError extends Error {
   constructor() {
     super('The list is empty');
   }
 }
 
-class IndexOutOfBoundsError extends Error {
+export class IndexOutOfBoundsError extends Error {
   constructor() {
     super('Index is out of bounds');
   }
