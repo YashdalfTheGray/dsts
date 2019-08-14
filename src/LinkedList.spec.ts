@@ -161,3 +161,25 @@ test('getAt throws an error for empty list', t => {
   const error = t.throws(() => ll.getAt(8));
   t.assert(error instanceof ListEmptyError);
 });
+
+test('is an iterable', t => {
+  const ll = new LinkedList<number>();
+
+  t.deepEqual([...ll], []);
+});
+
+test('returns items through iterator', t => {
+  const ll = new LinkedList<number>();
+
+  ll.push(4)
+    .push(10)
+    .push(14);
+
+  let runCount = 0;
+  for (let n of ll) {
+    t.assert(typeof n === 'number');
+    runCount += 1;
+  }
+
+  t.is(runCount, 3);
+});
