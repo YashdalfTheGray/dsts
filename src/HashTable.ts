@@ -21,5 +21,19 @@ export function numberHashCode(num: number): number {
 export default class HashTable<K, V> {
   private list: LinkedList<KeyValuePair<K, V>>[];
 
-  constructor(private hashFunc: HashFunction<K>) {}
+  constructor(private hashFunc: HashFunction<K>, private buckets: number = 16) {
+    this.list = [];
+  }
+
+  public put(key: K, value: V): this {
+    const index = this.hashFunc(key) % this.buckets;
+
+    if (!this.list[index]) {
+      this.list[index] = new LinkedList<KeyValuePair<K, V>>();
+    }
+
+    this.list[index].push({ key, value });
+
+    return this;
+  }
 }
