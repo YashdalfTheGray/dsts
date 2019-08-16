@@ -48,4 +48,20 @@ export default class HashTable<K, V> {
 
     return this;
   }
+
+  public get(key: K): V {
+    if (this.list.length === 0) {
+      throw new EmptyTableError();
+    }
+
+    const index = this.hashFunc(key) % this.buckets;
+
+    for (let kv of this.list[index]) {
+      if (kv && kv.key === key) {
+        return kv.value;
+      }
+    }
+
+    throw new KeyNotFoundError(`${key}`);
+  }
 }
