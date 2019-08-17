@@ -37,6 +37,10 @@ export default class HashTable<K, V> {
     this.list = [];
   }
 
+  get size(): number {
+    return this.list.reduce((sum, l) => sum + l.length, 0);
+  }
+
   public put(key: K, value: V): this {
     const index = this.hashFunc(key) % this.buckets;
 

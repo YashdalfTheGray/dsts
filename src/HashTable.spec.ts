@@ -47,3 +47,23 @@ test('number hash returns the same hash for the same number', t => {
 
   t.is(hash1, hash2);
 });
+
+test('takes in a hash function', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  t.assert(ht instanceof HashTable);
+});
+
+test('size property returns the current size', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  ht.put('key1', 100);
+
+  t.is(ht.size, 1);
+});
+
+test('size property returns 0 for empty list', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  t.is(ht.size, 0);
+});
