@@ -68,4 +68,13 @@ export default class HashTable<K, V> {
 
     throw new KeyNotFoundError(`${key}`);
   }
+
+  public containsKey(key: K): boolean {
+    const item = this.list[this.hashFunc(key) % this.buckets];
+    return item ? item.length !== 0 : false;
+  }
+
+  public isEmpty(): boolean {
+    return this.list.length === 0;
+  }
 }
