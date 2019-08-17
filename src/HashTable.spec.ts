@@ -67,3 +67,35 @@ test('size property returns 0 for empty list', t => {
 
   t.is(ht.size, 0);
 });
+
+test('isEmpty returns true for empty table', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  t.is(ht.isEmpty(), true);
+});
+
+test('isEmpty returns false for empty table', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  ht.put('foo', 1);
+
+  t.is(ht.isEmpty(), false);
+});
+
+test('containsKey returns true when a key exists', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  ht.put('foo', 1);
+  ht.put('bar', 2);
+
+  t.is(ht.containsKey('foo'), true);
+});
+
+test('containsKey returns false when a key exists', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  ht.put('foo', 1);
+  ht.put('bar', 2);
+
+  t.is(ht.containsKey('baz'), false);
+});
