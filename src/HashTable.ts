@@ -84,8 +84,10 @@ export default class HashTable<K, V> {
     }
 
     for (let item of this.list) {
-      for (let kv of item) {
-        yield kv;
+      if (item) {
+        for (let kv of item) {
+          yield kv;
+        }
       }
     }
   }
