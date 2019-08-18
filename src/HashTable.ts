@@ -77,4 +77,16 @@ export default class HashTable<K, V> {
   public isEmpty(): boolean {
     return this.list.length === 0;
   }
+
+  public *[Symbol.iterator]() {
+    if (this.list.length === 0) {
+      return null;
+    }
+
+    for (let item of this.list) {
+      for (let kv of item) {
+        yield kv;
+      }
+    }
+  }
 }
