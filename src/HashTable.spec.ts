@@ -99,3 +99,12 @@ test('containsKey returns false when a key exists', t => {
 
   t.is(ht.containsKey('baz'), false);
 });
+
+test('put adds a key value pair', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  ht.put('foo', 1);
+
+  t.is(ht.size, 1);
+  t.deepEqual([...ht], [{ key: 'foo', value: 1 }]);
+});
