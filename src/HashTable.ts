@@ -60,9 +60,11 @@ export default class HashTable<K, V> {
 
     const index = this.hashFunc(key) % this.buckets;
 
-    for (let kv of this.list[index]) {
-      if (kv && kv.key === key) {
-        return kv.value;
+    if (this.list[index]) {
+      for (let kv of this.list[index]) {
+        if (kv!.key === key) {
+          return kv!.value;
+        }
       }
     }
 
