@@ -1,6 +1,11 @@
 import test from 'ava';
 
-import HashTable, { numberHashCode, stringHashCode } from './HashTable';
+import HashTable, {
+  numberHashCode,
+  stringHashCode,
+  EmptyTableError,
+  KeyNotFoundError
+} from './HashTable';
 
 test('string hash returns a number', t => {
   const hash = stringHashCode('testtest');
@@ -107,4 +112,28 @@ test('put adds a key value pair', t => {
 
   t.is(ht.size, 1);
   t.deepEqual([...ht], [{ key: 'foo', value: 1 }]);
+});
+
+test('get returns a value by key', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  ht.put('foo', 1);
+
+  t.deepEqual(ht.get('foo'), 1);
+});
+
+test('get throws for empty table', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  const error = t.throws(() => ht.get('foo'));
+  t.assert(error instanceof EmptyTableError);
+});
+
+test('get throws for missing key', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  ht.put('foo', 1);
+
+  const error = t.throws(() => ht.get('bar'));
+  t.assert(error instanceof KeyNotFoundError);
 });
