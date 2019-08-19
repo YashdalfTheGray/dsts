@@ -59,6 +59,15 @@ test('takes in a hash function', t => {
   t.assert(ht instanceof HashTable);
 });
 
+test('takes in a number of buckets', t => {
+  const ht = new HashTable<string, number>(stringHashCode, 1);
+
+  ht.put('foo', 1);
+  ht.put('bar', 2);
+
+  t.assert(ht instanceof HashTable);
+});
+
 test('size property returns the current size', t => {
   const ht = new HashTable<string, number>(stringHashCode);
 
@@ -136,4 +145,26 @@ test('get throws for missing key', t => {
 
   const error = t.throws(() => ht.get('bar'));
   t.assert(error instanceof KeyNotFoundError);
+});
+
+test('is an iterable', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  t.deepEqual([...ht], []);
+});
+
+test('returns items through iterator', t => {
+  const ht = new HashTable<string, number>(stringHashCode);
+
+  ht.put('foo1', 4)
+    .put('foo2', 10)
+    .put('foo3', 14);
+
+  let runCount = 0;
+  for (let kv of ht) {
+    t.assert(typeof kv === 'object');
+    runCount += 1;
+  }
+
+  t.is(runCount, 3);
 });
