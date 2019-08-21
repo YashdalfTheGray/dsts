@@ -58,3 +58,23 @@ test('peek returns a copy of the top of the stack', t => {
   t.deepEqual(peek, [3, 4]);
   t.not(s.peek(), peek);
 });
+
+test('peek throws an error if the stack is empty', t => {
+  const s = new Stack<number>();
+
+  t.throws(() => s.peek());
+});
+
+test('isEmpty returns true for an empty stack', t => {
+  const s = new Stack<string>();
+
+  t.is(s.isEmpty(), true);
+});
+
+test('isEmpty returns false for an stack with stuff', t => {
+  const s = new Stack<string>();
+
+  s.push('a').push('b');
+
+  t.is(s.isEmpty(), false);
+});
