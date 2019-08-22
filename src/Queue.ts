@@ -17,4 +17,12 @@ export default class Queue<T> {
     this.list.push(data);
     return this;
   }
+
+  public dequeue(): T {
+    if (this.list.length === 0) {
+      throw new EmptyQueueError();
+    }
+
+    return this.list.shift();
+  }
 }
