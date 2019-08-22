@@ -23,6 +23,6 @@ export default class Queue<T> {
       throw new EmptyQueueError();
     }
 
-    return this.list.shift();
+    return this.list.shift()!;
   }
 }
