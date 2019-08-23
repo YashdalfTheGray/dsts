@@ -25,4 +25,20 @@ export default class Queue<T> {
 
     return this.list.shift()!;
   }
+
+  public get size() {
+    return this.list.length;
+  }
+
+  public peek(): T {
+    if (this.list.length === 0) {
+      throw new EmptyQueueError();
+    }
+
+    return cloneDeep(this.list[0]);
+  }
+
+  public isEmpty(): boolean {
+    return this.list.length === 0;
+  }
 }
