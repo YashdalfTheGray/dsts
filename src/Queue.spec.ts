@@ -32,3 +32,27 @@ test('dequeue throws an error if there is nothing in the queue', t => {
   const error = t.throws(() => q.dequeue());
   t.assert(error instanceof EmptyQueueError);
 });
+
+test('peek returns a copy of the top of the queue', t => {
+  const q = new Queue<number[]>();
+
+  q.enqueue([1, 2]).enqueue([3, 4]);
+  const peek = q.peek();
+
+  t.deepEqual(peek, [1, 2]);
+  t.not(peek, q.peek());
+});
+
+test('isEmpty returns true for an empty queue', t => {
+  const q = new Queue<number>();
+
+  t.is(q.isEmpty(), true);
+});
+
+test('isEmpty returns false for a queue with stuff', t => {
+  const q = new Queue<number>();
+
+  q.enqueue(1).enqueue(2);
+
+  t.is(q.isEmpty(), false);
+});
