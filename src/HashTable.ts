@@ -1,17 +1,19 @@
 import LinkedList from './LinkedList';
 
-export type KeyValuePair<K, V> = {
+export interface IKeyValuePair<K, V> {
   key: K;
   value: V;
-};
+}
 
 export type HashFunction<K> = (key: K) => number;
 
 export function stringHashCode(str: string): number {
+  /* tslint:disable no-bitwise */
   return Array.from(str).reduce(
     (s, c) => (Math.imul(31, s) + c.charCodeAt(0)) | 0,
     0
   );
+  /* tslint:enable no-bitwise */
 }
 
 export function numberHashCode(num: number): number {
@@ -31,7 +33,7 @@ export class KeyNotFoundError extends Error {
 }
 
 export default class HashTable<K, V> {
-  private list: LinkedList<KeyValuePair<K, V>>[];
+  private list: Array<LinkedList<IKeyValuePair<K, V>>>;
 
   constructor(private hashFunc: HashFunction<K>, private buckets: number = 16) {
     this.list = [];
@@ -45,7 +47,7 @@ export default class HashTable<K, V> {
     const index = this.hashFunc(key) % this.buckets;
 
     if (!this.list[index]) {
-      this.list[index] = new LinkedList<KeyValuePair<K, V>>();
+      this.list[index] = new LinkedList<IKeyValuePair<K, V>>();
     }
 
     this.list[index].push({ key, value });
@@ -61,7 +63,7 @@ export default class HashTable<K, V> {
     const index = this.hashFunc(key) % this.buckets;
 
     if (this.list[index]) {
-      for (let kv of this.list[index]) {
+      for (const kv of this.list[index]) {
         if (kv!.key === key) {
           return kv!.value;
         }
@@ -85,9 +87,9 @@ export default class HashTable<K, V> {
       return null;
     }
 
-    for (let item of this.list) {
+    for (const item of this.list) {
       if (item) {
-        for (let kv of item) {
+        for (const kv of item) {
           yield kv;
         }
       }
