@@ -56,3 +56,17 @@ test('isEmpty returns false for a queue with stuff', t => {
 
   t.is(q.isEmpty(), false);
 });
+
+test('size returns 0 for an empty queue', t => {
+  const q = new Queue<number>();
+
+  t.is(q.size, 0);
+});
+
+test('size returns the size for a queue with stuff', t => {
+  const q = new Queue<number>();
+
+  q.enqueue(1).enqueue(2);
+
+  t.is(q.size, 2);
+});
