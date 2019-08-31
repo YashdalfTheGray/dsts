@@ -1,10 +1,10 @@
 import test from 'ava';
 
 import HashTable, {
-  numberHashCode,
-  stringHashCode,
   EmptyTableError,
-  KeyNotFoundError
+  KeyNotFoundError,
+  numberHashCode,
+  stringHashCode
 } from './HashTable';
 
 test('string hash returns a number', t => {
@@ -161,7 +161,7 @@ test('returns items through iterator', t => {
     .put('foo3', 14);
 
   let runCount = 0;
-  for (let kv of ht) {
+  for (const kv of ht) {
     t.assert(typeof kv === 'object');
     runCount += 1;
   }

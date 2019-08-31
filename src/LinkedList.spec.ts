@@ -176,7 +176,7 @@ test('returns items through iterator', t => {
     .push(14);
 
   let runCount = 0;
-  for (let n of ll) {
+  for (const n of ll) {
     t.assert(typeof n === 'number');
     runCount += 1;
   }
