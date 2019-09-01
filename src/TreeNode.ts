@@ -1,7 +1,17 @@
+import { cloneDeep } from 'lodash';
+
 export default class TreeNode<T> {
   constructor(
-    public data: T,
+    private nodeData: T,
     public parent: TreeNode<T> | null = null,
     public children: Array<TreeNode<T>> = []
   ) {}
+
+  public get data(): T {
+    return cloneDeep(this.nodeData);
+  }
+
+  public set data(data: T) {
+    this.nodeData = cloneDeep(data);
+  }
 }
