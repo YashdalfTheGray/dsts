@@ -17,3 +17,12 @@ test('tree node has sane defaults for parents and children', t => {
   t.is(node.parent, null);
   t.deepEqual(node.children, []);
 });
+
+test('tree node get data returns a copy', t => {
+  const node = new TreeNode<number[]>([2, 3]);
+
+  const data = node.data;
+
+  t.deepEqual(data, [2, 3]);
+  t.not(node.data, data);
+});
