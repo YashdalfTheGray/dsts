@@ -23,7 +23,7 @@ export default class Tree<T> {
     this.root = new TreeNode<T>(data, null, []);
   }
 
-  private traverseDFS(nodeCallback: (node: T) => void) {
+  private traverseDFS<R>(nodeCallback: Predicate<T, R>) {
     if (this.root) {
       (function dfs(currentNode) {
         for (let i = 0, length = currentNode.children.length; i < length; i++) {
@@ -36,7 +36,7 @@ export default class Tree<T> {
     }
   }
 
-  private traverseBFS(nodeCallback: (node: T) => void) {
+  private traverseBFS<R>(nodeCallback: Predicate<T, R>) {
     const queue = new Queue<TreeNode<T>>();
 
     if (this.root) {
@@ -52,6 +52,8 @@ export default class Tree<T> {
         nodeCallback(currentTree.data);
         currentTree = queue.dequeue();
       }
+    } else {
+      throw new EmptyTreeError();
     }
   }
 }
