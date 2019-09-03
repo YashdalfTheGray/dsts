@@ -7,7 +7,16 @@ export class EmptyTreeError extends Error {
   }
 }
 
+enum TraversalStrategies {
+  BFS,
+  DFS
+}
+
+type Predicate<T, R> = (node: T) => R;
+
 export default class Tree<T> {
+  public static readonly TraversalStrageies = TraversalStrategies;
+
   private root: TreeNode<T> | null;
 
   constructor(data: T) {
