@@ -27,6 +27,17 @@ export default class Tree<T> {
     }
   }
 
+  public contains(
+    nodeCallback: Predicate<T, boolean>,
+    strategy: TraversalStrategies = Tree.TraversalStrageies.DFS
+  ) {
+    if (strategy === Tree.TraversalStrageies.BFS) {
+      this.traverseDFS(nodeCallback);
+    } else {
+      this.traverseBFS(nodeCallback);
+    }
+  }
+
   private traverseDFS<R>(nodeCallback: Predicate<T, R>) {
     if (this.root) {
       (function dfs(currentNode) {
