@@ -19,8 +19,12 @@ export default class Tree<T> {
 
   private root: TreeNode<T> | null;
 
-  constructor(data: T) {
-    this.root = new TreeNode<T>(data, null, []);
+  constructor(data?: T) {
+    if (data) {
+      this.root = new TreeNode<T>(data, null, []);
+    } else {
+      this.root = null;
+    }
   }
 
   private traverseDFS<R>(nodeCallback: Predicate<T, R>) {
