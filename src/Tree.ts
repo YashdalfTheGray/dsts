@@ -12,7 +12,7 @@ enum TraversalStrategies {
   DEPTH_FIRST
 }
 
-type Predicate<T, R> = (node: T) => R;
+type Predicate<T, R> = (node: TreeNode<T>) => R;
 
 export default class Tree<T> {
   public static readonly TraversalStrageies = TraversalStrategies;
@@ -38,20 +38,20 @@ export default class Tree<T> {
     }
   }
 
-  private traverseDFS<R>(nodeCallback: Predicate<T, R>) {
+  private traverseDFS(nodeCallback: Predicate<T, void>) {
     if (this.root) {
       (function dfs(currentNode) {
         for (let i = 0, length = currentNode.children.length; i < length; i++) {
           dfs(currentNode.children[i]);
         }
-        nodeCallback(currentNode.data);
+        nodeCallback(currentNode);
       })(this.root);
     } else {
       throw new EmptyTreeError();
     }
   }
 
-  private traverseBFS<R>(nodeCallback: Predicate<T, R>) {
+  private traverseBFS(nodeCallback: Predicate<T, void>) {
     const queue = new Queue<TreeNode<T>>();
 
     if (this.root) {
@@ -64,7 +64,7 @@ export default class Tree<T> {
           queue.enqueue(currentTree.children[i]);
         }
 
-        nodeCallback(currentTree.data);
+        nodeCallback(currentTree);
         currentTree = queue.dequeue();
       }
     } else {
