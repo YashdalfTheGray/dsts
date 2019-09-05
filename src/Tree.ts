@@ -8,8 +8,8 @@ export class EmptyTreeError extends Error {
 }
 
 enum TraversalStrategies {
-  BFS,
-  DFS
+  BREADTH_FIRST,
+  DEPTH_FIRST
 }
 
 type Predicate<T, R> = (node: T) => R;
@@ -29,9 +29,9 @@ export default class Tree<T> {
 
   public contains(
     nodeCallback: Predicate<T, boolean>,
-    strategy: TraversalStrategies = Tree.TraversalStrageies.DFS
+    strategy: TraversalStrategies = Tree.TraversalStrageies.DEPTH_FIRST
   ) {
-    if (strategy === Tree.TraversalStrageies.BFS) {
+    if (strategy === Tree.TraversalStrageies.BREADTH_FIRST) {
       this.traverseDFS(nodeCallback);
     } else {
       this.traverseBFS(nodeCallback);
