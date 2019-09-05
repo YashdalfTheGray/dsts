@@ -27,15 +27,22 @@ export default class Tree<T> {
     }
   }
 
-  public contains(
-    nodeCallback: Predicate<T, boolean>,
+  public search(
+    testFunc: Predicate<T, boolean>,
     strategy: TraversalStrategies = Tree.TraversalStrageies.DEPTH_FIRST
-  ) {
+  ): TreeNode<T> | null {
+    let returnVal: TreeNode<T> | null = null;
     if (strategy === Tree.TraversalStrageies.BREADTH_FIRST) {
-      this.traverseDFS(nodeCallback);
+      this.traverseDFS(node =>
+        testFunc(node) ? (returnVal = node) : (returnVal = null)
+      );
     } else {
-      this.traverseBFS(nodeCallback);
+      this.traverseBFS(node =>
+        testFunc(node) ? (returnVal = node) : (returnVal = null)
+      );
     }
+
+    return returnVal;
   }
 
   private traverseDFS(nodeCallback: Predicate<T, void>) {
