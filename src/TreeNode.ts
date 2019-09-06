@@ -14,4 +14,8 @@ export default class TreeNode<T> {
   public set data(data: T) {
     this.nodeData = cloneDeep(data);
   }
+
+  public isLeaf(): boolean {
+    return this.children.length === 0;
+  }
 }
