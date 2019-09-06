@@ -45,6 +45,13 @@ export default class Tree<T> {
     return returnVal;
   }
 
+  public contains(
+    data: T,
+    strategy: TraversalStrategies = Tree.TraversalStrageies.DEPTH_FIRST
+  ): boolean {
+    return !!this.search(node => node.data === data, strategy);
+  }
+
   private traverseDFS(nodeCallback: Predicate<T, void>) {
     if (this.root) {
       (function dfs(currentNode) {
