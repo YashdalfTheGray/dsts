@@ -7,6 +7,12 @@ export class EmptyTreeError extends Error {
   }
 }
 
+export class ParentNodeNotFoundError<T> extends Error {
+  constructor(parent: T) {
+    super(`A node with data, ${parent} not found`);
+  }
+}
+
 enum TraversalStrategies {
   BREADTH_FIRST,
   DEPTH_FIRST
@@ -43,6 +49,20 @@ export default class Tree<T> {
     }
 
     return returnVal;
+  }
+
+  public add(
+    data: T,
+    parent: T,
+    strategy: TraversalStrategies = Tree.TraversalStrageies.DEPTH_FIRST
+  ) {
+    const parentNode = this.search(node => node.data === parent, strategy);
+
+    if (parentNode) {
+      parentNode.children.push(new TreeNode<T>(data, parentNode, []));
+    } else {
+      throw new ParentNodeNotFoundError(parent);
+    }
   }
 
   public contains(
