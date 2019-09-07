@@ -57,9 +57,12 @@ export default class Tree<T> {
     strategy: TraversalStrategies = Tree.TraversalStrageies.DEPTH_FIRST
   ) {
     const parentNode = this.search(node => node.data === parent, strategy);
+    this.addNodeChild(data, parentNode);
+  }
 
-    if (parentNode) {
-      parentNode.children.push(new TreeNode<T>(data, parentNode, []));
+  public addNodeChild(data: T, node: TreeNode<T> | null = this.root) {
+    if (node) {
+      node.children.push(new TreeNode<T>(data, node, []));
     } else {
       throw new ParentNodeNotFoundError(parent);
     }
