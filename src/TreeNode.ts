@@ -18,4 +18,8 @@ export default class TreeNode<T> {
   public isLeaf(): boolean {
     return this.children.length === 0;
   }
+
+  public get size(): number {
+    return this.children.reduce((size, n) => size + n.size, 1);
+  }
 }
