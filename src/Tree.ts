@@ -75,6 +75,10 @@ export default class Tree<T> {
     return !!this.search(node => node.data === data, strategy);
   }
 
+  public get size(): number {
+    return this.root ? this.root.size : 0;
+  }
+
   private traverseDFS(nodeCallback: Predicate<T, void>) {
     if (this.root) {
       (function dfs(currentNode) {
