@@ -27,7 +27,7 @@ export default class Tree<T> {
 
   constructor(data?: T) {
     if (data) {
-      this.root = new TreeNode<T>(data, null, []);
+      this.root = new TreeNode<T>(data);
     } else {
       this.root = null;
     }
@@ -62,7 +62,7 @@ export default class Tree<T> {
 
   public addNodeChild(data: T, node: TreeNode<T> | null = this.root) {
     if (node) {
-      node.children.push(new TreeNode<T>(data, node, []));
+      node.children.push(new TreeNode<T>(data, node));
     } else {
       throw new ParentNodeNotFoundError(parent);
     }

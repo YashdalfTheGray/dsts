@@ -1,11 +1,11 @@
 import { cloneDeep } from 'lodash';
 
 export default class TreeNode<T> {
-  constructor(
-    private nodeData: T,
-    public parent: TreeNode<T> | null = null,
-    public children: Array<TreeNode<T>> = []
-  ) {}
+  public children: Array<TreeNode<T>>;
+
+  constructor(private nodeData: T, public parent: TreeNode<T> | null = null) {
+    this.children = [];
+  }
 
   public get data(): T {
     return cloneDeep(this.nodeData);
