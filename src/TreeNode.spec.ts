@@ -5,7 +5,7 @@ import TreeNode from './TreeNode';
 test('tree node can take data, parent and children', t => {
   const parent = new TreeNode<number>(1);
 
-  const node = new TreeNode<number>(2, parent, []);
+  const node = new TreeNode<number>(2, parent);
   t.is(node.data, 2);
   t.is(node.parent!.data, 1);
 });
