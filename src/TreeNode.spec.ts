@@ -54,3 +54,31 @@ test('tree node size returns the number of nodes with more descendants', t => {
 
   t.is(node.size, 9);
 });
+
+test('tree node height returns 1 for just itself', t => {
+  const node = new TreeNode<number>(1);
+
+  t.is(node.height, 1);
+});
+
+test('tree node height returns 2 for a node with children', t => {
+  const node = new TreeNode<number>(1);
+
+  node.children.push(...[1, 2, 3].map(n => new TreeNode<number>(n, node)));
+
+  t.is(node.height, 2);
+});
+
+test('tree node height returns the number of levels of a tree', t => {
+  const node = new TreeNode<number>(1);
+
+  const child1: TreeNode<number> = new TreeNode<number>(2, node);
+  const child2: TreeNode<number> = new TreeNode<number>(5, node);
+  child1.children.push(...[3, 4].map(n => new TreeNode<number>(n, child1)));
+  child2.children.push(
+    ...[6, 7, 8, 9].map(n => new TreeNode<number>(n, child2))
+  );
+  node.children.push(child1, child2);
+
+  t.is(node.height, 3);
+});
