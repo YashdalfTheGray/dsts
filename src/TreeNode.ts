@@ -22,4 +22,14 @@ export default class TreeNode<T> {
   public get size(): number {
     return this.children.reduce((size, n) => size + n.size, 1);
   }
+
+  public get height(): number {
+    return (
+      1 +
+      this.children.reduce((height, n) => {
+        const nodeHeight = n.height;
+        return nodeHeight > height ? nodeHeight : height;
+      }, 0)
+    );
+  }
 }
