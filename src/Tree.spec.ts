@@ -14,6 +14,18 @@ test('can take an optional tree root node data', t => {
   t.assert(tr instanceof Tree);
 });
 
+test('returns 1 for size with a single node', t => {
+  const tr = new Tree<number>(1);
+
+  t.is(tr.size, 1);
+});
+
+test('returns 1 for height with a single node', t => {
+  const tr = new Tree<number>(1);
+
+  t.is(tr.height, 1);
+});
+
 test('can add nodes to the tree given a specific parent using depth first', t => {
   const tr = new Tree<number>(1);
 
