@@ -39,11 +39,11 @@ export default class Tree<T> {
   ): TreeNode<T> | null {
     let returnVal: TreeNode<T> | null = null;
     if (strategy === Tree.TraversalStrageies.BREADTH_FIRST) {
-      this.traverseDFS(node =>
+      this.traverseBFS(node =>
         testFunc(node) ? (returnVal = node) : (returnVal = null)
       );
     } else {
-      this.traverseBFS(node =>
+      this.traverseDFS(node =>
         testFunc(node) ? (returnVal = node) : (returnVal = null)
       );
     }
