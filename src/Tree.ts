@@ -110,7 +110,15 @@ export default class Tree<T> {
         }
 
         nodeCallback(currentTree);
-        currentTree = queue.dequeue();
+        try {
+          currentTree = queue.dequeue();
+        } catch (e) {
+          if (e instanceof EmptyQueueError) {
+            currentTree = (null as unknown) as TreeNode<T>;
+          } else {
+            throw e;
+          }
+        }
       }
     } else {
       throw new EmptyTreeError();
