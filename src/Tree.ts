@@ -1,4 +1,4 @@
-import Queue from './Queue';
+import Queue, { EmptyQueueError } from './Queue';
 import TreeNode from './TreeNode';
 
 export class EmptyTreeError extends Error {
@@ -86,9 +86,9 @@ export default class Tree<T> {
   private traverseDFS(nodeCallback: Predicate<T, void>) {
     if (this.root) {
       (function dfs(currentNode) {
-        for (let i = 0, length = currentNode.children.length; i < length; i++) {
-          dfs(currentNode.children[i]);
-        }
+        currentNode.children.forEach(c => {
+          dfs(c);
+        });
         nodeCallback(currentNode);
       })(this.root);
     } else {
@@ -105,9 +105,9 @@ export default class Tree<T> {
       let currentTree = queue.dequeue();
 
       while (currentTree) {
-        for (let i = 0, length = currentTree.children.length; i < length; i++) {
-          queue.enqueue(currentTree.children[i]);
-        }
+        currentTree.children.forEach(c => {
+          queue.enqueue(c);
+        });
 
         nodeCallback(currentTree);
         try {
