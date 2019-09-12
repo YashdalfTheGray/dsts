@@ -38,14 +38,17 @@ export default class Tree<T> {
     strategy: TraversalStrategies = Tree.TraversalStrageies.DEPTH_FIRST
   ): TreeNode<T> | null {
     let returnVal: TreeNode<T> | null = null;
+
+    const nodeSearchFunc = (node: TreeNode<T>) => {
+      if (!returnVal) {
+        returnVal = testFunc(node) ? node : null;
+      }
+    };
+
     if (strategy === Tree.TraversalStrageies.BREADTH_FIRST) {
-      this.traverseBFS(node =>
-        testFunc(node) ? (returnVal = node) : (returnVal = null)
-      );
+      this.traverseBFS(nodeSearchFunc);
     } else {
-      this.traverseDFS(node =>
-        testFunc(node) ? (returnVal = node) : (returnVal = null)
-      );
+      this.traverseDFS(nodeSearchFunc);
     }
 
     return returnVal;
