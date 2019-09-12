@@ -35,7 +35,7 @@ test('can add nodes to the tree given a specific parent using depth first', t =>
   t.is(tr.search(n => n.data === 1)!.children[0].data, 2);
 });
 
-test('search returns the node if found', t => {
+test.only('search returns the node if found', t => {
   const tr = new Tree<number>(1);
 
   tr.add(2, 1);
@@ -46,5 +46,5 @@ test('search returns the node if found', t => {
 
   const node = tr.search(n => n.data === 6);
   t.not(node, null);
-  t.is(node!.data, 2);
+  t.is(node!.data, 6);
 });
