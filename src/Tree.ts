@@ -25,7 +25,10 @@ export default class Tree<T> {
 
   private root: TreeNode<T> | null;
 
-  constructor(data?: T) {
+  constructor(
+    data?: T,
+    private defaultStrategy: TraversalStrategies = TraversalStrategies.DEPTH_FIRST
+  ) {
     if (data) {
       this.root = new TreeNode<T>(data);
     } else {
@@ -35,7 +38,7 @@ export default class Tree<T> {
 
   public search(
     testFunc: Predicate<T, boolean>,
-    strategy: TraversalStrategies = Tree.TraversalStrageies.DEPTH_FIRST
+    strategy: TraversalStrategies = this.defaultStrategy
   ): TreeNode<T> | null {
     let returnVal: TreeNode<T> | null = null;
 
@@ -57,7 +60,7 @@ export default class Tree<T> {
   public add(
     data: T,
     parent: T,
-    strategy: TraversalStrategies = Tree.TraversalStrageies.DEPTH_FIRST
+    strategy: TraversalStrategies = this.defaultStrategy
   ) {
     const parentNode = this.search(node => node.data === parent, strategy);
     this.addNodeChild(data, parentNode);
