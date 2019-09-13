@@ -62,8 +62,13 @@ export default class Tree<T> {
     parent: T,
     strategy: TraversalStrategies = this.defaultStrategy
   ) {
+    if (!this.root) {
+      this.root = new TreeNode<T>(data);
+      return this;
+    }
     const parentNode = this.search(node => node.data === parent, strategy);
     this.addNodeChild(data, parentNode);
+    return this;
   }
 
   public addNodeChild(data: T, node: TreeNode<T> | null = this.root) {
@@ -76,7 +81,7 @@ export default class Tree<T> {
 
   public contains(
     data: T,
-    strategy: TraversalStrategies = Tree.TraversalStrageies.DEPTH_FIRST
+    strategy: TraversalStrategies = this.defaultStrategy
   ): boolean {
     return !!this.search(node => node.data === data, strategy);
   }
