@@ -63,3 +63,17 @@ test.only('search returns the node if found', t => {
   t.not(node, null);
   t.is(node!.data, 6);
 });
+
+test.only('search returns the node if found using breadth first', t => {
+  const tr = new Tree<number>(1, Tree.TraversalStrageies.BREADTH_FIRST);
+
+  tr.add(2, 1)
+    .add(3, 1)
+    .add(4, 1)
+    .add(5, 4)
+    .add(6, 5);
+
+  const node = tr.search(n => n.data === 6);
+  t.not(node, null);
+  t.is(node!.data, 6);
+});
