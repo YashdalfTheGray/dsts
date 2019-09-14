@@ -96,3 +96,13 @@ test('tree node isLeaf returns false for a node with children', t => {
 
   t.is(node.isLeaf(), false);
 });
+
+test('can set the tree node data using the data property', t => {
+  const node = new TreeNode<number[]>([1, 2]);
+
+  const newData = [2, 3];
+  node.data = newData;
+
+  t.deepEqual(node.data, [2, 3]);
+  t.not(node.data, newData);
+});
