@@ -82,3 +82,17 @@ test('tree node height returns the number of levels of a tree', t => {
 
   t.is(node.height, 3);
 });
+
+test('tree node isLeaf returns true for a single tree node', t => {
+  const node = new TreeNode<number>(1);
+
+  t.is(node.isLeaf(), true);
+});
+
+test('tree node isLeaf returns false for a node with children', t => {
+  const node = new TreeNode<number>(1);
+
+  node.children.push(new TreeNode<number>(2));
+
+  t.is(node.isLeaf(), false);
+});
