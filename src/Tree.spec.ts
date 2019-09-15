@@ -32,6 +32,15 @@ test('returns 1 for height with a single node', t => {
   t.is(tr.height, 1);
 });
 
+test('add just defines the root if nothing is in the tree', t => {
+  const tr = new Tree<number>();
+
+  tr.add(1, 1);
+
+  t.is(tr.size, 1);
+  t.is(tr.contains(1), true);
+});
+
 test('can add nodes to the tree given a specific parent using depth first', t => {
   const tr = new Tree<number>(1);
 
