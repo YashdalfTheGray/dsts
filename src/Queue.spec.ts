@@ -43,6 +43,12 @@ test('peek returns a copy of the top of the queue', t => {
   t.not(peek, q.peek());
 });
 
+test('peek throws if the queue is empty', t => {
+  const q = new Queue<number[]>();
+
+  t.throws(() => q.peek());
+});
+
 test('isEmpty returns true for an empty queue', t => {
   const q = new Queue<number>();
 
