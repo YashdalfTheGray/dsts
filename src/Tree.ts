@@ -57,6 +57,12 @@ export default class Tree<T> {
     return returnVal;
   }
 
+  /**
+   * find a parent node and add some data to it
+   * @param data the data to add to the tree
+   * @param parent the parent to add it to, if there is nothing in the tree, parent is ignored
+   * @param strategy the traversal to use to find the parent. @see TraversalStrageies
+   */
   public add(
     data: T,
     parent: T,
@@ -71,6 +77,11 @@ export default class Tree<T> {
     return this;
   }
 
+  /**
+   * adds data as a new child node to the specified node
+   * @param data the data to add to the node
+   * @param node the node to add the data to, if null, does nothing
+   */
   public addNodeChild(data: T, node: TreeNode<T> | null = this.root) {
     if (node) {
       node.children.push(new TreeNode<T>(data, node));
