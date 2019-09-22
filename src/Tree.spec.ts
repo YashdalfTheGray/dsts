@@ -1,6 +1,7 @@
 import test from 'ava';
 
 import Tree, { EmptyTreeError } from './Tree';
+import TreeNode from './TreeNode';
 
 test('can create a new tree', t => {
   const tr = new Tree<number>();
@@ -57,6 +58,28 @@ test('can add nodes to the tree given a specific parent using breadth first', t 
 
   t.is(tr.size, 2);
   t.is(tr.search(n => n.data === 1)!.children[0].data, 2);
+});
+
+test('add child to node allows child to be added directly', t => {
+  const tr = new Tree<number>(1);
+
+  const root = tr.search(n => n.data === 1);
+  tr.addNodeChild(2, root);
+
+  t.is(tr.size, 2);
+  t.is(tr.height, 2);
+});
+
+test('add child throws if the parent is null', t => {
+  const tr = new Tree<number>(1);
+
+  t.throws(() => tr.addNodeChild(2, null));
+});
+
+test('add child throws if the parent is not a node', t => {
+  const tr = new Tree<number>(1);
+
+  t.throws(() => tr.addNodeChild(2, (3 as unknown) as TreeNode<number>));
 });
 
 test.only('search returns the node if found', t => {
