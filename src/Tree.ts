@@ -83,7 +83,7 @@ export default class Tree<T> {
    * @param node the node to add the data to, if null, does nothing
    */
   public addNodeChild(data: T, node: TreeNode<T> | null = this.root) {
-    if (node) {
+    if (node && node instanceof TreeNode) {
       node.children.push(new TreeNode<T>(data, node));
     } else {
       throw new ParentNodeNotFoundError(parent);
