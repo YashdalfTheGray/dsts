@@ -82,6 +82,15 @@ test('add child to node allows child to be added directly', t => {
   t.is(tr.height, 2);
 });
 
+test('add child uses the root if no parent is given', t => {
+  const tr = new Tree<number>(1);
+
+  tr.addNodeChild(2);
+
+  t.is(tr.size, 2);
+  t.is(tr.height, 2);
+});
+
 test('add child throws if the parent is null', t => {
   const tr = new Tree<number>(1);
 
