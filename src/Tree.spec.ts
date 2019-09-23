@@ -82,7 +82,7 @@ test('add child throws if the parent is not a node', t => {
   t.throws(() => tr.addNodeChild(2, (3 as unknown) as TreeNode<number>));
 });
 
-test.only('search returns the node if found', t => {
+test('search returns the node if found', t => {
   const tr = new Tree<number>(1);
 
   tr.add(2, 1)
@@ -96,7 +96,7 @@ test.only('search returns the node if found', t => {
   t.is(node!.data, 6);
 });
 
-test.only('search returns the node if found using breadth first', t => {
+test('search returns the node if found using breadth first', t => {
   const tr = new Tree<number>(1, Tree.TraversalStrageies.BREADTH_FIRST);
 
   tr.add(2, 1)
