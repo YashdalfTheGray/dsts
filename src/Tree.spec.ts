@@ -27,10 +27,22 @@ test('returns 1 for size with a single node', t => {
   t.is(tr.size, 1);
 });
 
+test('returns 0 as size for basically uninitialized tree', t => {
+  const tr = new Tree<number>();
+
+  t.is(tr.size, 0);
+});
+
 test('returns 1 for height with a single node', t => {
   const tr = new Tree<number>(1);
 
   t.is(tr.height, 1);
+});
+
+test('returns 0 as height for basically uninitialized tree', t => {
+  const tr = new Tree<number>();
+
+  t.is(tr.height, 0);
 });
 
 test('add just defines the root if nothing is in the tree', t => {
