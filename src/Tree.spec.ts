@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import Tree, { EmptyTreeError } from './Tree';
+import Tree, { EmptyTreeError, ParentNodeNotFoundError } from './Tree';
 import TreeNode from './TreeNode';
 
 test('can create a new tree', t => {
@@ -95,6 +95,13 @@ test('add child throws if the parent is null', t => {
   const tr = new Tree<number>(1);
 
   t.throws(() => tr.addNodeChild(2, null));
+});
+
+test('add child throws an error if parent not found', t => {
+  const tr = new Tree<number>(1);
+
+  const err = t.throws(() => tr.addNodeChild(3, null));
+  t.assert(err instanceof ParentNodeNotFoundError);
 });
 
 test('add child throws if the parent is not a node', t => {
