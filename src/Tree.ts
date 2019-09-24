@@ -8,8 +8,8 @@ export class EmptyTreeError extends Error {
 }
 
 export class ParentNodeNotFoundError<T> extends Error {
-  constructor(parent: T) {
-    super(`A node with data, ${parent} not found`);
+  constructor() {
+    super('Parent node is not a valid tree node');
   }
 }
 
@@ -86,7 +86,7 @@ export default class Tree<T> {
     if (node && node instanceof TreeNode) {
       node.children.push(new TreeNode<T>(data, node));
     } else {
-      throw new ParentNodeNotFoundError(parent);
+      throw new ParentNodeNotFoundError();
     }
   }
 
