@@ -90,6 +90,15 @@ export default class Tree<T> {
     }
   }
 
+  public remove(
+    data: T,
+    strategy: TraversalStrategies = this.defaultStrategy
+  ): T {
+    if (!this.root) {
+      throw new NodeNotFoundError();
+    }
+  }
+
   public contains(
     data: T,
     strategy: TraversalStrategies = this.defaultStrategy
