@@ -137,3 +137,17 @@ test('search returns the node if found using breadth first', t => {
   t.not(node, null);
   t.is(node!.data, 6);
 });
+
+test('depth first search with an empty tree throws an error', t => {
+  const tr = new Tree<number>();
+
+  const err = t.throws(() => tr.search(n => n.data === 6));
+  t.assert(err instanceof EmptyTreeError);
+});
+
+test('breadth first search with an empty tree throws an error', t => {
+  const tr = new Tree<number>(undefined, Tree.TraversalStrageies.BREADTH_FIRST);
+
+  const err = t.throws(() => tr.search(n => n.data === 6));
+  t.assert(err instanceof EmptyTreeError);
+});
