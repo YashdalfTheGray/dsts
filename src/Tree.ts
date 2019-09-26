@@ -1,4 +1,6 @@
-import Queue, { EmptyQueueError } from './Queue';
+import { cloneDeep } from 'lodash';
+
+import Queue from './Queue';
 import TreeNode from './TreeNode';
 
 export class EmptyTreeError extends Error {
@@ -95,6 +97,20 @@ export default class Tree<T> {
     strategy: TraversalStrategies = this.defaultStrategy
   ): T {
     if (!this.root) {
+      throw new EmptyTreeError();
+    }
+
+    const parentNode = this.search(
+      n => n.children.findIndex(c => c.data === data) > -1,
+      strategy
+    );
+
+    if (parentNode) {
+      const index = parentNode.children.findIndex(c => c.data === data);
+      const [removedNode] = parentNode.children.splice(index, 1);
+
+      return cloneDeep(removedNode.data);
+    } else {
       throw new NodeNotFoundError();
     }
   }
@@ -144,11 +160,7 @@ export default class Tree<T> {
         try {
           currentTree = queue.dequeue();
         } catch (e) {
-          if (e instanceof EmptyQueueError) {
-            currentTree = (null as unknown) as TreeNode<T>;
-          } else {
-            throw e;
-          }
+          currentTree = (null as unknown) as TreeNode<T>;
         }
       }
     } else {
