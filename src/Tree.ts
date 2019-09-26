@@ -1,5 +1,3 @@
-import { cloneDeep } from 'lodash';
-
 import Queue from './Queue';
 import TreeNode from './TreeNode';
 
@@ -109,7 +107,7 @@ export default class Tree<T> {
       const index = parentNode.children.findIndex(c => c.data === data);
       const [removedNode] = parentNode.children.splice(index, 1);
 
-      return cloneDeep(removedNode.data);
+      return removedNode.data;
     } else {
       throw new NodeNotFoundError();
     }

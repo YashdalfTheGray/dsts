@@ -110,6 +110,50 @@ test('add child throws if the parent is not a node', t => {
   t.throws(() => tr.addNodeChild(2, (3 as unknown) as TreeNode<number>));
 });
 
+test('remove throws if the tree is empty', t => {
+  const tr = new Tree<number>();
+
+  const err = t.throws(() => tr.remove(1));
+  t.assert(err instanceof EmptyTreeError);
+});
+
+test('remove removes a node from the tree using depth first', t => {
+  const tr = new Tree<number>(1);
+
+  tr.add(2, 1)
+    .add(3, 2)
+    .add(4, 1);
+  const removedData = tr.remove(3);
+
+  t.is(removedData, 3);
+  t.is(tr.size, 3);
+  t.is(tr.height, 2);
+});
+
+test('remove removes a node from the tree using breadth first', t => {
+  const tr = new Tree<number>(1);
+
+  tr.add(2, 1)
+    .add(3, 2)
+    .add(4, 1);
+  const removedData = tr.remove(3, Tree.TraversalStrageies.BREADTH_FIRST);
+
+  t.is(removedData, 3);
+  t.is(tr.size, 3);
+  t.is(tr.height, 2);
+});
+
+test(`remove throws when trying to remove a node that doesn't exist`, t => {
+  const tr = new Tree<number>(1);
+
+  tr.add(2, 1)
+    .add(3, 2)
+    .add(4, 1);
+
+  const err = t.throws(() => tr.remove(6));
+  t.assert(err instanceof NodeNotFoundError);
+});
+
 test('search returns the node if found', t => {
   const tr = new Tree<number>(1);
 
