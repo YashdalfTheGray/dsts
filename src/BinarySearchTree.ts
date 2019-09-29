@@ -28,6 +28,14 @@ export default class BinarySearchTree<T> {
     return this;
   }
 
+  public get size(): number {
+    return this.root.size;
+  }
+
+  public get height(): number {
+    return this.root.height;
+  }
+
   private recursiveAdd(node: BSTNode<T>, data: T) {
     if (this.compare(node.data, data) === -1) {
       if (node.isLeaf()) {
