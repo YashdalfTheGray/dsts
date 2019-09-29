@@ -28,6 +28,10 @@ export default class BinarySearchTree<T> {
     return this;
   }
 
+  public search(data: T): BSTNode<T> | null {
+    return this.recursiveSearch(this.root, data);
+  }
+
   public get size(): number {
     return this.root.size;
   }
@@ -49,6 +53,20 @@ export default class BinarySearchTree<T> {
       } else {
         this.recursiveAdd(node.left, data);
       }
+    }
+  }
+
+  private recursiveSearch(node: BSTNode<T>, data: T): BSTNode<T> | null {
+    if (node.data === data) {
+      return node;
+    } else if (node.data !== data && node.isLeaf()) {
+      return null;
+    }
+
+    if (this.compare(node.data, data) === -1) {
+      return this.recursiveSearch(node.right, data);
+    } else {
+      return this.recursiveSearch(node.left, data);
     }
   }
 }
