@@ -1,13 +1,17 @@
 import BSTNode from './BSTNode';
 
 /**
- * If b should be to the right of a, then return -1.
- * If b should be to the left of a, return 0 or 1.
+ * If b should be to the right of a, then return 1.
+ * If b should be to the left of a, return 0 or -1.
  */
 export type Comparator<T> = (a: T, b: T) => -1 | 0 | 1;
 
 export const numericCompare: Comparator<number> = (a: number, b: number) => {
-  if (a < b) {
+  if (typeof a !== 'number' || typeof b !== 'number') {
+    throw new TypeError('Both a and b need to be numbers');
+  }
+
+  if (b < a) {
     return -1;
   } else if (a === b) {
     return 0;
@@ -43,15 +47,15 @@ export default class BinarySearchTree<T> {
   private recursiveAdd(node: BSTNode<T>, data: T) {
     if (this.compare(node.data, data) === -1) {
       if (node.isLeaf()) {
-        node.right = new BSTNode(data);
-      } else {
-        this.recursiveAdd(node.right, data);
-      }
-    } else {
-      if (node.isLeaf()) {
         node.left = new BSTNode(data);
       } else {
         this.recursiveAdd(node.left, data);
+      }
+    } else {
+      if (node.isLeaf()) {
+        node.right = new BSTNode(data);
+      } else {
+        this.recursiveAdd(node.right, data);
       }
     }
   }
@@ -64,9 +68,9 @@ export default class BinarySearchTree<T> {
     }
 
     if (this.compare(node.data, data) === -1) {
-      return this.recursiveSearch(node.right, data);
-    } else {
       return this.recursiveSearch(node.left, data);
+    } else {
+      return this.recursiveSearch(node.right, data);
     }
   }
 }
