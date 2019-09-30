@@ -46,13 +46,13 @@ export default class BinarySearchTree<T> {
 
   private recursiveAdd(node: BSTNode<T>, data: T) {
     if (this.compare(node.data, data) === -1) {
-      if (node.isLeaf()) {
+      if (!node.left) {
         node.left = new BSTNode(data);
       } else {
         this.recursiveAdd(node.left, data);
       }
     } else {
-      if (node.isLeaf()) {
+      if (!node.right) {
         node.right = new BSTNode(data);
       } else {
         this.recursiveAdd(node.right, data);
@@ -68,9 +68,9 @@ export default class BinarySearchTree<T> {
     }
 
     if (this.compare(node.data, data) === -1) {
-      return this.recursiveSearch(node.left, data);
+      return node.left ? this.recursiveSearch(node.left, data) : null;
     } else {
-      return this.recursiveSearch(node.right, data);
+      return node.right ? this.recursiveSearch(node.right, data) : null;
     }
   }
 }
