@@ -27,3 +27,21 @@ test('numeric compare throws an error if b is not a number', t => {
   const error = t.throws(() => numericCompare(1, ('b' as unknown) as number));
   t.assert(error instanceof TypeError);
 });
+
+test('binary search tree takes node data and compare function', t => {
+  const bst = new BinarySearchTree<number>(1, numericCompare);
+
+  t.assert(bst instanceof BinarySearchTree);
+});
+
+test('binary search tree add adds nodes to the tree', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  bst
+    .add(2)
+    .add(7)
+    .add(4);
+
+  t.is(bst.size, 4);
+  t.is(bst.height, 3);
+});
