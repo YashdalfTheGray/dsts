@@ -1,3 +1,5 @@
+import { isEqual } from 'lodash';
+
 import BSTNode from './BSTNode';
 
 /**
@@ -51,13 +53,13 @@ export default class BinarySearchTree<T> {
   private recursiveAdd(node: BSTNode<T>, data: T) {
     if (this.compare(node.data, data) === -1) {
       if (!node.left) {
-        node.left = new BSTNode(data);
+        node.left = new BSTNode(data, node);
       } else {
         this.recursiveAdd(node.left, data);
       }
     } else {
       if (!node.right) {
-        node.right = new BSTNode(data);
+        node.right = new BSTNode(data, node);
       } else {
         this.recursiveAdd(node.right, data);
       }
@@ -65,7 +67,7 @@ export default class BinarySearchTree<T> {
   }
 
   private recursiveSearch(node: BSTNode<T>, data: T): BSTNode<T> | null {
-    if (node.data === data) {
+    if (isEqual(node.data, data)) {
       return node;
     } else if (node.data !== data && node.isLeaf()) {
       return null;
