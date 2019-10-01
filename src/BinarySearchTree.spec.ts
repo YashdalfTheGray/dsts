@@ -40,8 +40,26 @@ test('binary search tree add adds nodes to the tree', t => {
   bst
     .add(2)
     .add(7)
-    .add(4);
+    .add(4)
+    .add(12)
+    .add(6);
 
-  t.is(bst.size, 4);
+  t.is(bst.size, 6);
   t.is(bst.height, 3);
+});
+
+test('binary search tree add adds nodes to the right places', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  bst.add(2).add(8);
+  const root = bst.search(5);
+
+  t.is(root!.left.data, 2);
+  t.is(root!.right.data, 8);
+});
+
+test('binary search tree add supports fluent syntax', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  t.assert(bst.add(3) instanceof BinarySearchTree);
 });
