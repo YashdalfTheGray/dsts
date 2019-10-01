@@ -36,6 +36,10 @@ export default class BinarySearchTree<T> {
     return this.recursiveSearch(this.root, data);
   }
 
+  public contains(data: T): boolean {
+    return this.recursiveSearch(this.root, data) !== null;
+  }
+
   public get size(): number {
     return this.root.size;
   }
