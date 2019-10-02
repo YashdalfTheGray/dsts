@@ -63,3 +63,51 @@ test('binary search tree add supports fluent syntax', t => {
 
   t.assert(bst.add(3) instanceof BinarySearchTree);
 });
+
+test('binary search tree search returns the correct node', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  bst
+    .add(7)
+    .add(6)
+    .add(8)
+    .add(3)
+    .add(2)
+    .add(4);
+  const node = bst.search(4);
+
+  t.is(node!.data, 4);
+});
+
+test('binary search tree search returns null if the node is not found', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  bst
+    .add(7)
+    .add(6)
+    .add(8)
+    .add(3)
+    .add(2)
+    .add(4);
+  const node = bst.search(1);
+
+  t.is(node, null);
+});
+
+test('binary search tree search returns null when parent only has a right child', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  bst.add(7);
+  const node = bst.search(1);
+
+  t.is(node, null);
+});
+
+test('binary search tree search returns null when parent only has a left child', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  bst.add(1);
+  const node = bst.search(7);
+
+  t.is(node, null);
+});
