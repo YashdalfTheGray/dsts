@@ -22,6 +22,14 @@ export const numericCompare: Comparator<number> = (a: number, b: number) => {
   }
 };
 
+export class DuplicateNodeError<T> extends Error {
+  constructor(data: T) {
+    super(
+      `A node with the following data already exists in the tree.\n${data}`
+    );
+  }
+}
+
 export default class BinarySearchTree<T> {
   private root: BSTNode<T>;
 
@@ -51,7 +59,9 @@ export default class BinarySearchTree<T> {
   }
 
   private recursiveAdd(node: BSTNode<T>, data: T) {
-    if (this.compare(node.data, data) === -1) {
+    if (this.compare(node.data, data) === 0) {
+      throw new DuplicateNodeError(data);
+    } else if (this.compare(node.data, data) === -1) {
       if (!node.left) {
         node.left = new BSTNode(data, node);
       } else {
