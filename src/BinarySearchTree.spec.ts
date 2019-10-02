@@ -111,3 +111,19 @@ test('binary search tree search returns null when parent only has a left child',
 
   t.is(node, null);
 });
+
+test('binary search tree contains returns true when a node is found', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  bst.add(1);
+
+  t.is(bst.contains(1), true);
+});
+
+test('binary search tree contains returns false when a node is not found', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  bst.add(1);
+
+  t.is(bst.contains(7), false);
+});
