@@ -30,6 +30,12 @@ export class DuplicateNodeError<T> extends Error {
   }
 }
 
+export class NodeNotFoundError extends Error {
+  constructor() {
+    super('Node was not found in the tree');
+  }
+}
+
 export default class BinarySearchTree<T> {
   private root: BSTNode<T>;
 
