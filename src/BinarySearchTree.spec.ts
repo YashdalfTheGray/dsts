@@ -1,6 +1,9 @@
 import test from 'ava';
 
-import BinarySearchTree, { numericCompare } from './BinarySearchTree';
+import BinarySearchTree, {
+  DuplicateNodeError,
+  numericCompare
+} from './BinarySearchTree';
 
 test('numeric compare is a function', t => {
   t.assert(typeof numericCompare === 'function');
@@ -62,6 +65,13 @@ test('binary search tree add supports fluent syntax', t => {
   const bst = new BinarySearchTree<number>(5, numericCompare);
 
   t.assert(bst.add(3) instanceof BinarySearchTree);
+});
+
+test('binary search tree add throws an error if duplicate node is inserted', t => {
+  const bst = new BinarySearchTree<number>(5, numericCompare);
+
+  const error = t.throws(() => bst.add(5));
+  t.assert(error instanceof DuplicateNodeError);
 });
 
 test('binary search tree search returns the correct node', t => {
