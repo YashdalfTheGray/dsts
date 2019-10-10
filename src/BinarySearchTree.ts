@@ -1,6 +1,7 @@
 import { isEqual } from 'lodash';
 
 import BSTNode from './BSTNode';
+import { DuplicateNodeError, NodeNotFoundError } from './customErrors';
 
 /**
  * If b should be to the right of a, then return 1.
@@ -21,20 +22,6 @@ export const numericCompare: Comparator<number> = (a: number, b: number) => {
     return 1;
   }
 };
-
-export class DuplicateNodeError<T> extends Error {
-  constructor(data: T) {
-    super(
-      `A node with the following data already exists in the tree.\n${data}`
-    );
-  }
-}
-
-export class NodeNotFoundError extends Error {
-  constructor() {
-    super('Node was not found in the tree');
-  }
-}
 
 export default class BinarySearchTree<T> {
   private root: BSTNode<T>;
