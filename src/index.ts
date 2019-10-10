@@ -8,6 +8,8 @@ import Stack from './Stack';
 import Tree from './Tree';
 import TreeNode from './TreeNode';
 
+import * as errors from './CustomErrors';
+
 export {
   BinarySearchTree,
   BSTNode,
@@ -17,5 +19,6 @@ export {
   Queue,
   Stack,
   Tree,
-  TreeNode
+  TreeNode,
+  errors
 };
