@@ -1,17 +1,6 @@
+import { EmptyTreeError, NodeNotFoundError } from './customErrors';
 import Queue from './Queue';
 import TreeNode from './TreeNode';
-
-export class EmptyTreeError extends Error {
-  constructor() {
-    super('Tree is empty');
-  }
-}
-
-export class NodeNotFoundError extends Error {
-  constructor() {
-    super('Node was not found in the tree');
-  }
-}
 
 enum TraversalStrategies {
   BREADTH_FIRST,

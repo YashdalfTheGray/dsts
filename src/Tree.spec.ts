@@ -1,6 +1,7 @@
 import test from 'ava';
 
-import Tree, { EmptyTreeError, NodeNotFoundError } from './Tree';
+import { EmptyTreeError, NodeNotFoundError } from './customErrors';
+import Tree from './Tree';
 import TreeNode from './TreeNode';
 
 test('can create a new tree', t => {

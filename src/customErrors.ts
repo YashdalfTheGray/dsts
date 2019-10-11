@@ -11,3 +11,9 @@ export class NodeNotFoundError extends Error {
     super('Node was not found in the tree');
   }
 }
+
+export class EmptyTreeError extends Error {
+  constructor() {
+    super('Tree is empty');
+  }
+}
