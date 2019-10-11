@@ -17,3 +17,15 @@ export class EmptyTreeError extends Error {
     super('Tree is empty');
   }
 }
+
+export class EmptyTableError extends Error {
+  constructor() {
+    super('The table is empty');
+  }
+}
+
+export class KeyNotFoundError extends Error {
+  constructor(key: string) {
+    super(`Key ${key} was not found in the table`);
+  }
+}

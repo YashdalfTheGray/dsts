@@ -1,3 +1,4 @@
+import { EmptyTableError, KeyNotFoundError } from './customErrors';
 import LinkedList from './LinkedList';
 
 export interface IKeyValuePair<K, V> {
@@ -18,18 +19,6 @@ export function stringHashCode(str: string): number {
 
 export function numberHashCode(num: number): number {
   return stringHashCode(num.toFixed(0));
-}
-
-export class EmptyTableError extends Error {
-  constructor() {
-    super('The table is empty');
-  }
-}
-
-export class KeyNotFoundError extends Error {
-  constructor(key: string) {
-    super(`Key ${key} was not found in the table`);
-  }
 }
 
 export default class HashTable<K, V> {

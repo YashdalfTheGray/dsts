@@ -1,11 +1,7 @@
 import test from 'ava';
 
-import HashTable, {
-  EmptyTableError,
-  KeyNotFoundError,
-  numberHashCode,
-  stringHashCode
-} from './HashTable';
+import { EmptyTableError, KeyNotFoundError } from './customErrors';
+import HashTable, { numberHashCode, stringHashCode } from './HashTable';
 
 test('string hash returns a number', t => {
   const hash = stringHashCode('testtest');
