@@ -29,3 +29,15 @@ export class KeyNotFoundError extends Error {
     super(`Key ${key} was not found in the table`);
   }
 }
+
+export class ListEmptyError extends Error {
+  constructor() {
+    super('The list is empty');
+  }
+}
+
+export class IndexOutOfBoundsError extends Error {
+  constructor() {
+    super('Index is out of bounds');
+  }
+}

@@ -1,9 +1,7 @@
 import test from 'ava';
 
-import LinkedList, {
-  IndexOutOfBoundsError,
-  ListEmptyError
-} from './LinkedList';
+import { IndexOutOfBoundsError, ListEmptyError } from './customErrors';
+import LinkedList from './LinkedList';
 
 test('starts with no nodes', t => {
   const ll = new LinkedList();

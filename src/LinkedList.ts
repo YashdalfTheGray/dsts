@@ -1,16 +1,5 @@
-import { ListNode } from '.';
-
-export class ListEmptyError extends Error {
-  constructor() {
-    super('The list is empty');
-  }
-}
-
-export class IndexOutOfBoundsError extends Error {
-  constructor() {
-    super('Index is out of bounds');
-  }
-}
+import { IndexOutOfBoundsError, ListEmptyError } from './customErrors';
+import ListNode from './ListNode';
 
 export default class LinkedList<T> {
   private head: ListNode<T> | null;
