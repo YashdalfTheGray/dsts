@@ -39,22 +39,6 @@ export default class BinarySearchTree<T> {
     return this.recursiveSearch(this.root, data);
   }
 
-  public remove(data: T): T {
-    const nodeToRemove = this.recursiveSearch(this.root, data);
-    if (nodeToRemove) {
-      const dataToReturn = nodeToRemove.data;
-      const parent = nodeToRemove.parent!;
-      if (this.compare(parent.data, nodeToRemove.data) === -1) {
-        delete parent.left;
-      } else if (this.compare(parent.data, nodeToRemove.data) === 1) {
-        delete parent.right;
-      }
-      return dataToReturn;
-    } else {
-      throw new NodeNotFoundError();
-    }
-  }
-
   public contains(data: T): boolean {
     return this.recursiveSearch(this.root, data) !== null;
   }
