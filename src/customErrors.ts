@@ -1,3 +1,4 @@
+// tslint:disable:max-classes-per-file
 export class DuplicateNodeError<T> extends Error {
   constructor(data: T) {
     super(
@@ -39,5 +40,17 @@ export class ListEmptyError extends Error {
 export class IndexOutOfBoundsError extends Error {
   constructor() {
     super('Index is out of bounds');
+  }
+}
+
+export class EmptyQueueError extends Error {
+  constructor() {
+    super('The queue is empty');
+  }
+}
+
+export class EmptyStackError extends Error {
+  constructor() {
+    super('The stack is empty');
   }
 }

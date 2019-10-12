@@ -1,10 +1,6 @@
 import { cloneDeep } from 'lodash';
 
-export class EmptyQueueError extends Error {
-  constructor() {
-    super('The queue is empty');
-  }
-}
+import { EmptyQueueError } from './customErrors';
 
 export default class Queue<T> {
   private list: T[];

@@ -1,6 +1,7 @@
 import test from 'ava';
 
-import Stack, { EmptyStackError } from './Stack';
+import { EmptyStackError } from './customErrors';
+import Stack from './Stack';
 
 test('can create a new stack', t => {
   const s = new Stack<string>();

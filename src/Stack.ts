@@ -1,10 +1,6 @@
 import { cloneDeep } from 'lodash';
 
-export class EmptyStackError extends Error {
-  constructor() {
-    super('The stack is empty');
-  }
-}
+import { EmptyStackError } from './customErrors';
 
 export default class Stack<T> {
   private list: T[];

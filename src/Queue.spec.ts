@@ -1,6 +1,7 @@
 import test from 'ava';
 
-import Queue, { EmptyQueueError } from './Queue';
+import { EmptyQueueError } from './customErrors';
+import Queue from './Queue';
 
 test('can create a new Queue', t => {
   const q = new Queue<number>();
