@@ -1,4 +1,4 @@
-import { IndexOutOfBoundsError, ListEmptyError } from './customErrors';
+import { EmptyListError, IndexOutOfBoundsError } from './customErrors';
 import ListNode from './ListNode';
 
 export default class LinkedList<T> {
@@ -27,7 +27,7 @@ export default class LinkedList<T> {
 
   public unshift(): T {
     if (this.head === null) {
-      throw new ListEmptyError();
+      throw new EmptyListError();
     }
 
     const temp = this.head;
@@ -57,7 +57,7 @@ export default class LinkedList<T> {
 
   public pop(): T {
     if (this.head === null) {
-      throw new ListEmptyError();
+      throw new EmptyListError();
     } else if (this.head.next === null) {
       const temp = this.head;
       this.head = null;
@@ -79,7 +79,7 @@ export default class LinkedList<T> {
 
   public getAt(index: number): T {
     if (this.head === null) {
-      throw new ListEmptyError();
+      throw new EmptyListError();
     } else if (this.listLength < index) {
       throw new IndexOutOfBoundsError();
     }

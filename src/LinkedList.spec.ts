@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { IndexOutOfBoundsError, ListEmptyError } from './customErrors';
+import { EmptyListError, IndexOutOfBoundsError } from './customErrors';
 import LinkedList from './LinkedList';
 
 test('starts with no nodes', t => {
@@ -157,7 +157,7 @@ test('getAt throws an error for empty list', t => {
   const ll = new LinkedList<number>();
 
   const error = t.throws(() => ll.getAt(8));
-  t.assert(error instanceof ListEmptyError);
+  t.assert(error instanceof EmptyListError);
 });
 
 test('is an iterable', t => {
