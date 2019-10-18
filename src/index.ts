@@ -8,7 +8,7 @@ import Stack from './Stack';
 import Tree from './Tree';
 import TreeNode from './TreeNode';
 
-import * as errors from './CustomErrors';
+import * as errors from './customErrors';
 
 export {
   BinarySearchTree,

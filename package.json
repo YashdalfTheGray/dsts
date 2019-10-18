@@ -6,6 +6,7 @@
   "scripts": {
     "test": "nyc ava",
     "test:no-coverage": "ava",
+    "test:ci": "nvc ava && nyc report --reporter=text-lcov | coveralls",
     "linter": "tslint --fix --project .",
     "open-coverage-report": "npx open ./coverage/index.html",
     "prebuild": "npx rimraf dist",
@@ -69,6 +70,7 @@
   },
   "devDependencies": {
     "ava": "^2.2.0",
+    "coveralls": "^3.0.7",
     "husky": "^3.0.2",
     "lint-staged": "^9.2.1",
     "nyc": "^14.1.1",
