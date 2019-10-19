@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nyc ava",
     "test:no-coverage": "ava",
-    "test:ci": "nvc ava && nyc report --reporter=text-lcov | coveralls",
+    "test:ci": "nyc ava && nyc report --reporter=text-lcov | coveralls",
     "linter": "tslint --fix --project .",
     "open-coverage-report": "npx open ./coverage/index.html",
     "prebuild": "npx rimraf dist",
