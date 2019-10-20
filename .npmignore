@@ -6,6 +6,7 @@ tslint.json
 .babelrc
 .editorconfig
 .prettierrc
+.travis.yml
 dist/**/*.spec.*
 
 # Created by https://www.gitignore.io/api/osx,vim,node,linux,windows
