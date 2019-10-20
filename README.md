@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/YashdalfTheGray/dsts.svg?branch=master)](https://travis-ci.com/YashdalfTheGray/dsts)
 [![Coverage Status](https://coveralls.io/repos/github/YashdalfTheGray/dsts/badge.svg?branch=master)](https://coveralls.io/github/YashdalfTheGray/dsts?branch=master)
+[![npm version](https://badge.fury.io/js/%40yashdalfthegray%2Fdsts.svg)](https://badge.fury.io/js/%40yashdalfthegray%2Fdsts)
 
 # dsts
 
