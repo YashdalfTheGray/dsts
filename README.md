@@ -6,10 +6,16 @@
 
 Data structures, but in Typescript
 
-## Installation
+## Development
+
+This project uses `prettier` and `tslint` to maintain the code stylistically and `ava` to maintain the tests. All of the code written for this project is written in Typescript.
+
+Git hooks will automatically format for each commit but it's highly recommended that you use a prettier and tslint plugin for your IDE.
+
+### Installation
 
 Running an `npm install` will pull down all the dependencies that are necessary to get this working.
 
-## Running
+### Running
 
 There isn't much of "running" this repository in the traditional sense. Running an `npm test` will run the tests and generate a coverage report. The coverage report can be looked at using `npm run open-coverage-report`.
