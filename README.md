@@ -19,3 +19,7 @@ Running an `npm install` will pull down all the dependencies that are necessary 
 ### Running
 
 There isn't much of "running" this repository in the traditional sense. Running an `npm test` will run the tests and generate a coverage report. The coverage report can be looked at using `npm run open-coverage-report`.
+
+### Debugging
+
+If you use VSCode, there are presets that are included for debugging the tests if it should become necessary. The plain "Debug tests" target will still run the tests will `ava`'s built-in parallelism so a "Debug tests serially" also exists.
