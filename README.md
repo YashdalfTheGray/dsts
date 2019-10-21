@@ -2,9 +2,38 @@
 [![Coverage Status](https://coveralls.io/repos/github/YashdalfTheGray/dsts/badge.svg?branch=master)](https://coveralls.io/github/YashdalfTheGray/dsts?branch=master)
 [![npm version](https://badge.fury.io/js/%40yashdalfthegray%2Fdsts.svg)](https://badge.fury.io/js/%40yashdalfthegray%2Fdsts)
 
-# dsts
+# @yashdalfthegray/dsts
 
 Data structures, but in Typescript
+
+## Usage
+
+This package can be pulled from NPM by running `npm install @yashdalfthegray/dsts` and it comes with the following data structures.
+
+- HashTable
+- LinkedList
+- Queue
+- Stack
+- Tree
+- Binary Search Tree
+
+They are all ES6 classes with included typings and are parameterized to take a type.
+
+```typescript
+import { HashTable } from '@yashdalfthegray/dsts';
+
+const ht = new HashTable<string, number>(aHashFunc, optionalBucketSize);
+
+ht.put('test', 15);
+```
+
+```javascript
+import { HashTable } from '@yashdalfthegray/dsts';
+
+const ht = new HashTable(aHashFunc, optionalBucketSize);
+
+ht.put('test', 15);
+```
 
 ## Development
 
