@@ -2,26 +2,7 @@ import { isEqual } from 'lodash';
 
 import BSTNode from './BSTNode';
 import { DuplicateNodeError, NodeNotFoundError } from './customErrors';
-
-/**
- * If b should be to the right of a, then return 1.
- * If b should be to the left of a, return 0 or -1.
- */
-export type Comparator<T> = (a: T, b: T) => -1 | 0 | 1;
-
-export const numericCompare: Comparator<number> = (a: number, b: number) => {
-  if (typeof a !== 'number' || typeof b !== 'number') {
-    throw new TypeError('Both a and b need to be numbers');
-  }
-
-  if (b < a) {
-    return -1;
-  } else if (a === b) {
-    return 0;
-  } else {
-    return 1;
-  }
-};
+import { Comparator } from './utils';
 
 export default class BinarySearchTree<T> {
   private root: BSTNode<T>;

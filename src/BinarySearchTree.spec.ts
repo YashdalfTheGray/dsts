@@ -1,7 +1,8 @@
 import test from 'ava';
 
-import BinarySearchTree, { numericCompare } from './BinarySearchTree';
+import BinarySearchTree from './BinarySearchTree';
 import { DuplicateNodeError } from './customErrors';
+import { numericCompare } from './utils';
 
 test('numeric compare is a function', t => {
   t.assert(typeof numericCompare === 'function');

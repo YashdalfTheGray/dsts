@@ -1,25 +1,6 @@
 import { EmptyTableError, KeyNotFoundError } from './customErrors';
 import LinkedList from './LinkedList';
-
-export interface IKeyValuePair<K, V> {
-  key: K;
-  value: V;
-}
-
-export type HashFunction<K> = (key: K) => number;
-
-export function stringHashCode(str: string): number {
-  /* tslint:disable no-bitwise */
-  return Array.from(str).reduce(
-    (s, c) => (Math.imul(31, s) + c.charCodeAt(0)) | 0,
-    0
-  );
-  /* tslint:enable no-bitwise */
-}
-
-export function numberHashCode(num: number): number {
-  return stringHashCode(num.toFixed(0));
-}
+import { HashFunction, IKeyValuePair } from './utils';
 
 export default class HashTable<K, V> {
   private list: Array<LinkedList<IKeyValuePair<K, V>>>;
