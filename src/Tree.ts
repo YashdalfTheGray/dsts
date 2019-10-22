@@ -1,11 +1,7 @@
 import { EmptyTreeError, NodeNotFoundError } from './customErrors';
 import Queue from './Queue';
 import TreeNode from './TreeNode';
-
-enum TraversalStrategies {
-  BREADTH_FIRST,
-  DEPTH_FIRST
-}
+import { TraversalStrategies } from './utils';
 
 type Predicate<T, R> = (node: TreeNode<T>) => R;
 

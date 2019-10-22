@@ -4,12 +4,17 @@
  */
 export type Comparator<T> = (a: T, b: T) => -1 | 0 | 1;
 
+export type HashFunction<K> = (key: K) => number;
+
 export interface IKeyValuePair<K, V> {
   key: K;
   value: V;
 }
 
-export type HashFunction<K> = (key: K) => number;
+export enum TraversalStrategies {
+  BREADTH_FIRST,
+  DEPTH_FIRST
+}
 
 export function stringHashCode(str: string): number {
   /* tslint:disable no-bitwise */
