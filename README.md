@@ -19,6 +19,8 @@ This package can be pulled from NPM by running `npm install @yashdalfthegray/dst
 
 They are all ES6 classes with included typings and are parameterized to take a type.
 
+### Typescript
+
 ```typescript
 import { HashTable } from '@yashdalfthegray/dsts';
 
@@ -27,12 +29,28 @@ const ht = new HashTable<string, number>(aHashFunc, optionalBucketSize);
 ht.put('test', 15);
 ```
 
+### Javascript
+
 ```javascript
 import { HashTable } from '@yashdalfthegray/dsts';
 
 const ht = new HashTable(aHashFunc, optionalBucketSize);
 
 ht.put('test', 15);
+```
+
+### Utilities
+
+There are some utilities included in the package as well, basically types, enums, and some helper functions. They can be imported in as `utils`.
+
+```typescript
+import { BinarySearchTree, HashTable, utils } from '@yashdalfthegray/dsts';
+
+const ht = new HashTable<string, number>(utils.stringHashCode);
+ht.put('test', 15);
+
+const bst = new BinarySearchTree<number>(5, utils.numericCompare);
+bst.add(12);
 ```
 
 ## Development

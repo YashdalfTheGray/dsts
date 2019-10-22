@@ -9,6 +9,7 @@ import Tree from './Tree';
 import TreeNode from './TreeNode';
 
 import * as errors from './customErrors';
+import * as utils from './utils';
 
 export {
   BinarySearchTree,
@@ -20,5 +21,6 @@ export {
   Stack,
   Tree,
   TreeNode,
-  errors
+  errors,
+  utils
 };
