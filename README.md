@@ -53,6 +53,22 @@ const bst = new BinarySearchTree<number>(5, utils.numericCompare);
 bst.add(12);
 ```
 
+### Errors
+
+If, you need access to the errors that are thrown from these data structures, for subclassing or for testing, they are available under the `errors` object.
+
+```typescript
+import test from 'ava';
+import { LinkedList, errors } from '@yashdalfthegray/dsts';
+
+test('throws an error on remove if list is empty', t => {
+  const ll = new LinkedList<string>();
+
+  const error = t.throws(() => ll.pop());
+  t.assert(error instanceof errors.EmptyListError);
+});
+```
+
 ## Development
 
 This project uses `prettier` and `tslint` to maintain the code stylistically and `ava` to maintain the tests. All of the code written for this project is written in Typescript.
