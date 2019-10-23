@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { EmptyTreeError, NodeNotFoundError } from './customErrors';
+import { EmptyTreeError, NodeNotFoundError } from './errors';
 import Tree from './Tree';
 import TreeNode from './TreeNode';
 

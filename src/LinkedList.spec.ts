@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { EmptyListError, IndexOutOfBoundsError } from './customErrors';
+import { EmptyListError, IndexOutOfBoundsError } from './errors';
 import LinkedList from './LinkedList';
 
 test('starts with no nodes', t => {

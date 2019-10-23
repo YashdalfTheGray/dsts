@@ -1,7 +1,7 @@
 import test from 'ava';
 
 import BinarySearchTree from './BinarySearchTree';
-import { DuplicateNodeError } from './customErrors';
+import { DuplicateNodeError } from './errors';
 import { numericCompare } from './utils';
 
 test('numeric compare is a function', t => {

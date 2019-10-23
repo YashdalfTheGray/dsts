@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { EmptyStackError } from './customErrors';
+import { EmptyStackError } from './errors';
 import Stack from './Stack';
 
 test('can create a new stack', t => {

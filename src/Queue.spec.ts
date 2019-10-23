@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { EmptyQueueError } from './customErrors';
+import { EmptyQueueError } from './errors';
 import Queue from './Queue';
 
 test('can create a new Queue', t => {

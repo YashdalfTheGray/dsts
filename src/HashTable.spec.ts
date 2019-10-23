@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { EmptyTableError, KeyNotFoundError } from './customErrors';
+import { EmptyTableError, KeyNotFoundError } from './errors';
 import HashTable from './HashTable';
 import { numberHashCode, stringHashCode } from './utils';
 
