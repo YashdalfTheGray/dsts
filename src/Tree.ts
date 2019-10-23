@@ -1,4 +1,4 @@
-import { EmptyTreeError, NodeNotFoundError } from './customErrors';
+import { EmptyTreeError, NodeNotFoundError } from './errors';
 import Queue from './Queue';
 import TreeNode from './TreeNode';
 import { TraversalStrategies } from './utils';

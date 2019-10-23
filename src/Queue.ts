@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash';
 
-import { EmptyQueueError } from './customErrors';
+import { EmptyQueueError } from './errors';
 
 export default class Queue<T> {
   private list: T[];

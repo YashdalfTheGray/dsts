@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash';
 
-import { EmptyStackError } from './customErrors';
+import { EmptyStackError } from './errors';
 
 export default class Stack<T> {
   private list: T[];

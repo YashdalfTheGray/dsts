@@ -1,7 +1,7 @@
 import { isEqual } from 'lodash';
 
 import BSTNode from './BSTNode';
-import { DuplicateNodeError, NodeNotFoundError } from './customErrors';
+import { DuplicateNodeError, NodeNotFoundError } from './errors';
 import { Comparator } from './utils';
 
 export default class BinarySearchTree<T> {

@@ -1,4 +1,4 @@
-import { EmptyListError, IndexOutOfBoundsError } from './customErrors';
+import { EmptyListError, IndexOutOfBoundsError } from './errors';
 import ListNode from './ListNode';
 
 export default class LinkedList<T> {

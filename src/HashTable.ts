@@ -1,4 +1,4 @@
-import { EmptyTableError, KeyNotFoundError } from './customErrors';
+import { EmptyTableError, KeyNotFoundError } from './errors';
 import LinkedList from './LinkedList';
 import { HashFunction, IKeyValuePair } from './utils';
 
