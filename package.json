@@ -11,7 +11,8 @@
     "open-coverage-report": "npx open ./coverage/index.html",
     "prebuild": "npx rimraf dist",
     "build": "tsc",
-    "prepare": "npm test && npm run build"
+    "prepare": "npm run snyk-protect && npm test && npm run build",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -84,6 +85,8 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.149",
-    "lodash": "^4.17.15"
-  }
+    "lodash": "^4.17.15",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
