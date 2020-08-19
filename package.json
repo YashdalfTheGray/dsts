@@ -12,7 +12,8 @@
     "prebuild": "npx rimraf dist",
     "build": "tsc",
     "prepare": "npm run snyk-protect && npm test && npm run build",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk protect",
+    "prettier": "prettier --write src tsconfig.json tslint.json .travis.yml README.md"
   },
   "repository": {
     "type": "git",
@@ -65,8 +66,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "devDependencies": {
