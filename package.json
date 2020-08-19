@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/YashdalfTheGray/dsts#readme",
   "ava": {
-    "compileEnhancements": false,
     "extensions": [
       "ts"
     ],
