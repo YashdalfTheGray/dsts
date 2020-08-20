@@ -8,6 +8,7 @@ tslint.json
 .prettierrc
 .travis.yml
 dist/**/*.spec.*
+.snyk
 
 # Created by https://www.gitignore.io/api/osx,vim,node,linux,windows
 # Edit at https://www.gitignore.io/?templates=osx,vim,node,linux,windows
