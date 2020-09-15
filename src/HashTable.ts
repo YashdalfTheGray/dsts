@@ -3,7 +3,7 @@ import LinkedList from './LinkedList';
 import { HashFunction, IKeyValuePair } from './utils';
 
 export default class HashTable<K, V> {
-  private list: Array<LinkedList<IKeyValuePair<K, V>>>;
+  private list: LinkedList<IKeyValuePair<K, V>>[];
 
   constructor(private hashFunc: HashFunction<K>, private buckets: number = 16) {
     this.list = [];

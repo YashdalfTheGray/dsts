@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash';
 
 export default class TreeNode<T> {
-  public children: Array<TreeNode<T>>;
+  public children: TreeNode<T>[];
 
   constructor(private nodeData: T, public parent: TreeNode<T> | null = null) {
     this.children = [];

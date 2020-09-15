@@ -19,7 +19,7 @@ export default class BSTNode<T> {
   }
 
   public get size(): number {
-    return ([] as Array<BSTNode<T>>)
+    return ([] as BSTNode<T>[])
       .concat(!!this.left ? [this.left] : [], !!this.right ? [this.right] : [])
       .reduce((size, n) => size + n.size, 1);
   }
@@ -27,7 +27,7 @@ export default class BSTNode<T> {
   public get height(): number {
     return (
       1 +
-      ([] as Array<BSTNode<T>>)
+      ([] as BSTNode<T>[])
         .concat(
           !!this.left ? [this.left] : [],
           !!this.right ? [this.right] : []
