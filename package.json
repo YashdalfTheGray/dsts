@@ -11,8 +11,8 @@
     "open-coverage-report": "npx open ./coverage/index.html",
     "prebuild": "npx rimraf dist",
     "build": "tsc",
-    "prepare": "npm run snyk-protect && npm test && npm run build",
-    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect && npm test && npm run build && husky install",
+    "snyk-protect": "snyk-protect",
     "prettier": "prettier --write src tsconfig.json tslint.json .travis.yml README.md"
   },
   "repository": {
@@ -75,7 +75,7 @@
     "lint-staged": "^13.0.3",
     "nyc": "^15.1.0",
     "prettier": "^2.2.1",
-    "snyk": "^1.431.2",
+    "@snyk/protect": "^1.657.0",
     "source-map-support": "^0.5.19",
     "ts-node": "^10.9.1",
     "tslint": "^6.1.3",
