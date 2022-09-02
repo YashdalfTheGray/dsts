@@ -1,0 +1,36 @@
+on:
+  push:
+  pull_request:
+
+name: Test and Lint
+
+jobs:
+  test:
+    name: Test and Lint
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: ['14', 16', '18']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Run tests and lint
+        id: test-and-lint
+        run: |
+          npm run test:ci
+          npm run linter
+          npm run build
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
