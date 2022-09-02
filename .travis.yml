@@ -5,10 +5,10 @@ os:
   - osx
 
 node_js:
-  - "node"
-  - "14"
-  - "12"
-  - "10"
+  - 'node'
+  - '17'
+  - '16'
+  - '14'
 
 install:
   - npm install
@@ -20,4 +20,4 @@ script:
 
 cache:
   directories:
-    - "node_modules"
+    - 'node_modules'
