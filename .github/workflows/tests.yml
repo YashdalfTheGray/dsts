@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Install packages
-        run: npm install
+        run: npm ci --ignore-scripts
 
       - name: Run tests and lint
         run: |
