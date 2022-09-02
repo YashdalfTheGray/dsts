@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        node: ['14', 16', '18']
+        node: ['14', '16', '18']
 
     steps:
       - name: Checkout
@@ -23,8 +23,10 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: Install packages
+        run: npm install
+
       - name: Run tests and lint
-        id: test-and-lint
         run: |
           npm run test:ci
           npm run linter
