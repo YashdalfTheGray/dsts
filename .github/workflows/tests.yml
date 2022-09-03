@@ -1,5 +1,14 @@
 on:
   push:
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.prettierrc'
+      - '.nvmrc'
+      - 'tslint.json'
+      - '.husky'
+      - '.vscode'
+      - '.snyk'
   pull_request:
 
 name: Test and Lint
