@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/YashdalfTheGray/dsts.svg?branch=master)](https://travis-ci.com/YashdalfTheGray/dsts)
-[![Coverage Status](https://coveralls.io/repos/github/YashdalfTheGray/dsts/badge.svg?branch=master)](https://coveralls.io/github/YashdalfTheGray/dsts?branch=master)
+[![Test and Lint](https://github.com/YashdalfTheGray/dsts/actions/workflows/tests.yml/badge.svg)](https://github.com/YashdalfTheGray/dsts/actions/workflows/tests.yml)
+[![Coverage Status](https://coveralls.io/repos/github/YashdalfTheGray/dsts/badge.svg?branch=main)](https://coveralls.io/github/YashdalfTheGray/dsts?branch=main)
 [![npm version](https://badge.fury.io/js/%40yashdalfthegray%2Fdsts.svg)](https://badge.fury.io/js/%40yashdalfthegray%2Fdsts)
 
 # @yashdalfthegray/dsts
@@ -61,7 +61,7 @@ If, you need access to the errors that are thrown from these data structures, fo
 import test from 'ava';
 import { LinkedList, errors } from '@yashdalfthegray/dsts';
 
-test('throws an error on remove if list is empty', t => {
+test('throws an error on remove if list is empty', (t) => {
   const ll = new LinkedList<string>();
 
   const error = t.throws(() => ll.pop());
