@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nyc ava",
     "test:no-coverage": "ava",
-    "test:ci": "nyc --reporter lcovonly --reporter text ava",
+    "test:ci": "nyc --reporter lcovonly --reporter text ava --timeout=20s",
     "linter": "tslint --fix --project .",
     "open-coverage-report": "npx open ./coverage/index.html",
     "prebuild": "npx rimraf dist",

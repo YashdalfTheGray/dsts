@@ -35,7 +35,7 @@ jobs:
       - name: Install packages
         run: npm ci --ignore-scripts
 
-      - name: Run tests and lint
+      - name: Run tests, linter, and build
         run: |
           npm run test:ci
           npm run linter
