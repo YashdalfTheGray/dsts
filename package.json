@@ -13,7 +13,7 @@
     "build": "tsc",
     "prepare": "npm run snyk-protect && npm test && npm run build && husky install",
     "snyk-protect": "snyk-protect",
-    "prettier": "prettier --write src tsconfig.json tslint.json .travis.yml README.md",
+    "prettier": "prettier --write src tsconfig.json tslint.json README.md",
     "lint-staged": "lint-staged"
   },
   "repository": {
