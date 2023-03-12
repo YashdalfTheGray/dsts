@@ -16,3 +16,13 @@ updates:
       - 'dependencies'
     reviewers:
       - 'YashdalfTheGray'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'saturday'
+      time: '07:00'
+      timezone: 'America/Los_Angeles'
+    reviewers:
+      - 'YashdalfTheGray'
