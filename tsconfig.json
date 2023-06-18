@@ -17,8 +17,7 @@
     "removeComments": false,
     "esModuleInterop": true,
     "noLib": false,
-    "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": true
+    "preserveConstEnums": true
   },
   "filesGlob": ["./src/**/*.ts"],
   "exclude": ["node_modules", "dist", "./src/**/*.spec.ts"],
